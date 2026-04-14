@@ -74,3 +74,12 @@ The frontend is a React app that calls the backend API on `http://localhost:8000
 
 - The app falls back to a demo detection path if custom YOLO weights are not present.
 - The admin complaints list requires a Bearer token from `/auth/login`.
+
+## Render Backend Deploy
+
+Use repository-root-safe commands on Render:
+
+- Build Command: `pip install -r backend/requirements.txt`
+- Start Command: `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT --app-dir backend`
+
+If you see `Exited with status 127`, it usually means the start command was not found in the deploy environment. The `python -m uvicorn ...` command above avoids that issue.
