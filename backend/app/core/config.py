@@ -1,4 +1,3 @@
-import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -22,11 +21,7 @@ ALLOWED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 
 class Settings(BaseModel):
     app_name: str = "Smart Garbage Complaint System"
-    cors_origins: list[str] = [
-        origin.strip()
-        for origin in os.getenv("CORS_ORIGINS", "*").split(",")
-        if origin.strip()
-    ]
+    cors_origins: list[str] = ["http://localhost:5173", "http://127.0.0.1:5173"]
     database_url: str = f"sqlite:///{DATABASE_PATH.as_posix()}"
     upload_dir: Path = UPLOAD_DIR
     yolo_weights_path: Path = DEFAULT_YOLO_WEIGHTS
