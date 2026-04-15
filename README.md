@@ -48,7 +48,8 @@ npm install
 npm run dev
 ```
 
-Set `VITE_API_BASE_URL` if the API is not running on `http://localhost:8000`.
+Set `VITE_API_BASE_URL` for a separate frontend/backend deployment.
+If you do not set it, local dev uses `http://localhost:8000` and production falls back to the current site origin.
 
 ## API Endpoints
 
@@ -68,7 +69,7 @@ Change these before deploying.
 
 ## Frontend
 
-The frontend is a React app that calls the backend API on `http://localhost:8000`.
+The frontend is a React app that calls the backend API through `VITE_API_BASE_URL` when set.
 
 ## Notes
 

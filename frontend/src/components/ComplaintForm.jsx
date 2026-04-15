@@ -82,8 +82,12 @@ export function ComplaintForm({ onComplaintCreated }) {
         const formData = new FormData();
         formData.append('image', imageFile);
         formData.append('complaint_text', trimmedText);
-        formData.append('latitude', latitude);
-        formData.append('longitude', longitude);
+        if (latitude.trim()) {
+          formData.append('latitude', latitude.trim());
+        }
+        if (longitude.trim()) {
+          formData.append('longitude', longitude.trim());
+        }
         imageResult = await analyzeImage(formData);
         setAnalysis(imageResult);
       } else {
